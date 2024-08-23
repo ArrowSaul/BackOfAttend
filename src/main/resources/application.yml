@@ -8,15 +8,15 @@ spring:
     allow-circular-references: true
   datasource:
     druid:
-      driver-class-name: ${energy.datasource.driver-class-name}
-      url: jdbc:mysql://${energy.datasource.host}:${energy.datasource.port}/${energy.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
-      username: ${energy.datasource.username}
-      password: ${energy.datasource.password}
+      driver-class-name: ${attend.datasource.driver-class-name}
+      url: jdbc:mysql://${attend.datasource.host}:${attend.datasource.port}/${attend.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      username: ${attend.datasource.username}
+      password: ${attend.datasource.password}
   redis:
-    host: ${energy.redis.host}
-    port: ${energy.redis.port}
-    password: ${energy.redis.password}
-    database: ${energy.redis.database}
+    host: ${attend.redis.host}
+    port: ${attend.redis.port}
+    password: ${attend.redis.password}
+    database: ${attend.redis.database}
 # postgresql数据库
 #spring:
 #  profiles:
@@ -25,19 +25,19 @@ spring:
 #    allow-circular-references: true
 #  datasource:
 #    druid:
-#      driver-class-name: ${energy.datasource.driver-class-name}
-#      url: jdbc:postgresql://${energy.datasource.host}:${energy.datasource.port}/${energy.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
-#      username: ${energy.datasource.username}
-#      password: ${energy.datasource.password}
+#      driver-class-name: ${attend.datasource.driver-class-name}
+#      url: jdbc:postgresql://${attend.datasource.host}:${attend.datasource.port}/${attend.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+#      username: ${attend.datasource.username}
+#      password: ${attend.datasource.password}
 #  redis:
-#    host: ${energy.redis.host}
-#    port: ${energy.redis.port}
-#    password: ${energy.redis.password}
-#    database: ${energy.redis.database}
+#    host: ${attend.redis.host}
+#    port: ${attend.redis.port}
+#    password: ${attend.redis.password}
+#    database: ${attend.redis.database}
 mybatis:
   #mapper配置文件
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.energy.entity
+  type-aliases-package: com.attend.entity
   configuration:
     #开启驼峰命名
     map-underscore-to-camel-case: true
@@ -45,21 +45,27 @@ mybatis:
 logging:
   level:
     com:
-      energy:
+      attend:
         mapper: debug
         service: info
         controller: info
 
-energy:
+attend:
   jwt:
     # 设置jwt签名加密时使用的秘钥
-    admin-secret-key: energy
+    admin-secret-key: attend
     # 设置jwt过期时间
     admin-ttl: 720000000000
     # 设置前端传递过来的令牌名称
     admin-token-name: token
+    user-secret-key: itshuo
+    user-ttl: 7200000
+    user-token-name: authentication
   alioss:
-    endpoint: ${energy.alioss.endpoint}
-    access-key-id: ${energy.alioss.access-key-id}
-    access-key-secret: ${energy.alioss.access-key-secret}
-    bucket-name: ${energy.alioss.bucket-name}
+    endpoint: ${attend.alioss.endpoint}
+    access-key-id: ${attend.alioss.access-key-id}
+    access-key-secret: ${attend.alioss.access-key-secret}
+    bucket-name: ${attend.alioss.bucket-name}
+  wechat:
+    appid: ${attend.wechat.appid}
+    secret: ${attend.wechat.secret}

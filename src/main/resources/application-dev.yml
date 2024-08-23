@@ -1,28 +1,37 @@
 # mysql配置
-energy:
+attend:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     host: localhost
     port: 3306
-    database: energy
-# 配置自己的云服务器数据库用户名和密码
-    username: wangshuo
-    password: 123456
-## 配置自己的本机数据库用户名和密码
-#    username: root
+    database: attend
+## 配置自己的云服务器数据库用户名和密码
+#    username: wangshuo
 #    password: 123456
+# 配置自己的本机数据库用户名和密码
+    username: root
+    password: 123456
   redis:
     host: localhost
     port: 6379
     password: 123456
     database: 10
+# 配置自己的阿里云OSS
+  alioss:
+    endpoint: oss-cn-beijing.aliyuncs.com
+    access-key-id: LTAI5tDGrULGdBBeUK9nAvSm
+    access-key-secret: su3JIAi83LdgyhuqwGcsmJ76KXGzzN
+    bucket-name: sky-itcast-shuo
+  wechat:
+    appid: wx3f400a89aa622c96
+    secret: 5a40a062d4b8afa22a4e8ed5d08c2693
 ## postgresql配置
-#energy:
+#attend:
 #  datasource:
 #    driver-class-name: org.postgresql.Driver
 #    host: localhost
 #    port: 5432
-#    database: energy
+#    database: attend
 #    ## 配置自己的云服务器数据库用户名和密码
 #    #    username: wangshuo
 #    #    password: 123456
@@ -40,3 +49,6 @@ energy:
 #    access-key-id: LTAI5tDGrULGdBBeUK9nAvSm
 #    access-key-secret: su3JIAi83LdgyhuqwGcsmJ76KXGzzN
 #    bucket-name: sky-itcast-shuo
+#  wechat:
+#    appid: wx3f400a89aa622c96
+#    secret: 5a40a062d4b8afa22a4e8ed5d08c2693
