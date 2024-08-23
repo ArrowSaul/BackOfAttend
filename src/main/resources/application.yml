@@ -1,0 +1,65 @@
+server:
+  port: 8080
+# mysql数据库
+spring:
+  profiles:
+    active: dev
+  main:
+    allow-circular-references: true
+  datasource:
+    druid:
+      driver-class-name: ${energy.datasource.driver-class-name}
+      url: jdbc:mysql://${energy.datasource.host}:${energy.datasource.port}/${energy.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      username: ${energy.datasource.username}
+      password: ${energy.datasource.password}
+  redis:
+    host: ${energy.redis.host}
+    port: ${energy.redis.port}
+    password: ${energy.redis.password}
+    database: ${energy.redis.database}
+# postgresql数据库
+#spring:
+#  profiles:
+#    active: dev
+#  main:
+#    allow-circular-references: true
+#  datasource:
+#    druid:
+#      driver-class-name: ${energy.datasource.driver-class-name}
+#      url: jdbc:postgresql://${energy.datasource.host}:${energy.datasource.port}/${energy.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+#      username: ${energy.datasource.username}
+#      password: ${energy.datasource.password}
+#  redis:
+#    host: ${energy.redis.host}
+#    port: ${energy.redis.port}
+#    password: ${energy.redis.password}
+#    database: ${energy.redis.database}
+mybatis:
+  #mapper配置文件
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.energy.entity
+  configuration:
+    #开启驼峰命名
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    com:
+      energy:
+        mapper: debug
+        service: info
+        controller: info
+
+energy:
+  jwt:
+    # 设置jwt签名加密时使用的秘钥
+    admin-secret-key: energy
+    # 设置jwt过期时间
+    admin-ttl: 720000000000
+    # 设置前端传递过来的令牌名称
+    admin-token-name: token
+  alioss:
+    endpoint: ${energy.alioss.endpoint}
+    access-key-id: ${energy.alioss.access-key-id}
+    access-key-secret: ${energy.alioss.access-key-secret}
+    bucket-name: ${energy.alioss.bucket-name}
