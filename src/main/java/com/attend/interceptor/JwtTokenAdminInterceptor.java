@@ -1,4 +1,5 @@
 package com.attend.interceptor;
+
 import com.attend.constant.JwtClaimsConstant;
 import com.attend.context.BaseContext;
 import com.attend.properties.JwtProperties;

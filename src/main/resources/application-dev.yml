@@ -24,7 +24,7 @@ attend:
     bucket-name: sky-itcast-shuo
   wechat:
     appid: wx3f400a89aa622c96
-    secret: 5a40a062d4b8afa22a4e8ed5d08c2693
+    secret: f778d7d79435b543ebf8fb93a7271bdf
 ## postgresql配置
 #attend:
 #  datasource:
